@@ -1,0 +1,17 @@
+name: Main CI
+
+on: [push]
+
+jobs:
+  run-reusable-build:
+    uses: ./.github/workflows/reusable-build.yml
+    with:
+      node-version: '22'
+    secrets:
+      deploy-token: ${{ secrets.MY_DEPLOY_TOKEN }}
+
+/*
+In your main workflow file (e.g., .github/workflows/ci.yml), create a job that references the reusable workflow using the uses keyword at the job level:
+• Same repository. Use a relative path starting with ./ (e.g., uses: ./.github/workflows/reusable-build.yml).
+• Different repository. Use the {owner}/{repo}/.github/workflows/{filename}@{ref} format, specifying a branch, tag, or commit SHA (e.g., uses: my-org/shared-workflows/.github/workflows/reusable-build.yml@v1).
+*/
