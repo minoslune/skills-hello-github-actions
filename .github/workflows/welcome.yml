@@ -2,6 +2,7 @@ name: Post welcome comment
 on:
   pull_request:
     types: [opened]
+  workflow_dispatch: # Allows manual runs from the GitHub UI
 permissions:
   pull-requests: write
 jobs:
